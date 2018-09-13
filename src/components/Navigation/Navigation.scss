@@ -1,3 +1,5 @@
+$md-background--card:pink;
+
 .main-content {
     display: flex;
     flex-direction: column;
@@ -12,4 +14,10 @@
             flex: 1;
         }
     }
+}
+
+.navigation-drawer{
+    background-color: pink;
+    background: pink;
+    color: pink;
 }

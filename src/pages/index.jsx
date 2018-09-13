@@ -2,6 +2,7 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import Layout from '../layout'
 import config from '../../data/SiteConfig'
+import Map from '../components/Map'
 
 class Index extends React.Component {
   render () {
@@ -12,6 +13,7 @@ class Index extends React.Component {
             <title>{config.siteTitle}</title>
             <link rel='canonical' href={`${config.siteUrl}`} />
           </Helmet>
+          <Map />
         </div>
       </Layout>
     )
