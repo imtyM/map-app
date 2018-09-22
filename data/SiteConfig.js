@@ -29,7 +29,7 @@ module.exports = {
     },
     {
       label: 'Email',
-      url: 'm.imtiazmukadam@gmail.com',
+      url: 'mailto:m.imtiazmukadam@gmail.com',
       iconClassName: 'fa fa-envelope'
     }
   ],

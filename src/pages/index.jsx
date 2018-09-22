@@ -7,7 +7,7 @@ import Map from '../components/Map'
 class Index extends React.Component {
   render () {
     return (
-      <Layout location={this.props.location} title='Home'>
+      <Layout location={this.props.location} title='Map'>
         <div className='index-container'>
           <Helmet>
             <title>{config.siteTitle}</title>
