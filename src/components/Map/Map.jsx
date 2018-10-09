@@ -7,19 +7,20 @@ class MapContainer extends Component {
       <div className='map-container' >
         <Map
           google={this.props.google}
-          zoom={14}
+          zoom={20}
+          initialCenter={{
+            lat: -25.753359,
+            lng: 28.228935
+          }}
           style={{
           }}
         >
-
           <Marker
             name='Current location'
           />
-
           <InfoWindow onClose={this.onInfoWindowClose} />
         </Map>
       </div>
-
     )
   }
 }
