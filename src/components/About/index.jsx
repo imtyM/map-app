@@ -12,7 +12,6 @@ class About extends Component {
         <Card className='md-grid md-cell--8'>
           <div className='about-wrapper'>
             <img
-              src={config.userAvatar}
               className='about-img'
               alt={config.userName}
             />
