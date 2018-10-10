@@ -8,11 +8,10 @@ class MapUI extends Component {
       <Card>
         <CardTitle title='Map Actions' subtitle='' />
         <CardText >
-          <h3>Debug</h3>
           <div className='md-grid'>
             <Button raised secondary swapTheming
               onClick={this.props.click}
-              className='md-cell'
+              className='md-cell--12'
             >
             Poll Server
             </Button>
