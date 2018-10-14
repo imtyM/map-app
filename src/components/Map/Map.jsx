@@ -16,6 +16,7 @@ class MapContainer extends Component {
           }}
         >
           <Marker
+            position={this.props.currentLocation}
             name='Current location'
           />
           <InfoWindow onClose={this.onInfoWindowClose} />

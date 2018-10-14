@@ -4,6 +4,7 @@
   "version": "1.1.0",
   "author": "Imtiaz Mukadam",
   "dependencies": {
+    "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
     "font-awesome": "^4.7.0",
     "gatsby": "next",
@@ -61,7 +62,8 @@
     "lint:js": "eslint --ext .js,.jsx .",
     "lint:md": "remark content/posts/",
     "write-good": "write-good $(glob 'content/posts/**/*.md')",
-    "format:js": "prettier '**/*.{js,jsx}' --write"
+    "format:js": "prettier '**/*.{js,jsx}' --write",
+    "depnow": "rm -rf ./public && gatsby build && cd public && now --public && cd .. && now alias"
   },
   "remarkConfig": {
     "plugins": [

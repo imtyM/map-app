@@ -6,10 +6,13 @@ class MapUI extends Component {
   render () {
     return (
       <Card>
-        <CardTitle title='Map Actions' subtitle='' />
+        <CardTitle style={{justifyContent: 'center'}} title='Map Actions' subtitle='' />
         <CardText >
           <div className='md-grid'>
-            <Button raised secondary swapTheming
+            <Button
+              raised
+              secondary
+              swapTheming
               onClick={this.props.click}
               className='md-cell--12'
             >
