@@ -44,15 +44,14 @@ class index extends Component {
     // currently hard codded
     console.log(data.Item.val)
     const location = data.Item.val
-    if (location === 'Shaun') {
-      this.setState({
-        currentLocation: {
-          lat: -25.753953,
-          lng: 28.229920
-        }
-      })
-    } else if (location === 'Imtiaz') {
+    if (location === 'shaun') {
+      this.setLocation(-25.753953, 28.229920)
+    } else if (location === 'imtiaz') {
       this.setLocation(-25.753765, 28.228836)
+    } else if (location === 'franco') {
+      this.setLocation(-25.753845, 28.228982)
+    } else {
+      this.setLocation(-25.753806, 28.228497)
     }
   }
   pollClick () {
