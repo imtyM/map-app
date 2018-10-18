@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react'
+import {Map, Marker, GoogleApiWrapper} from 'google-maps-react'
 
 class MapContainer extends Component {
   render () {
@@ -8,10 +8,7 @@ class MapContainer extends Component {
         <Map
           google={this.props.google}
           zoom={20}
-          initialCenter={{
-            lat: -25.753359,
-            lng: 28.228935
-          }}
+          initialCenter={this.props.currentLocation}
           style={{
           }}
         >
@@ -19,7 +16,6 @@ class MapContainer extends Component {
             position={this.props.currentLocation}
             name='Current location'
           />
-          <InfoWindow onClose={this.onInfoWindowClose} />
         </Map>
       </div>
     )

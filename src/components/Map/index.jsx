@@ -10,21 +10,88 @@ class index extends Component {
   constructor () {
     super()
     this.pollClick = this.pollClick.bind(this)
+    this.startPolling = this.startPolling.bind(this)
+    this.stopPolling = this.stopPolling.bind(this)
+    this.poll = this.poll.bind(this)
+
+    this.processData = this.processData.bind(this)
+
     this.state = {
-      currentLocation: {}
+      currentLocation: {
+        lat: -25.753359,
+        lng: 28.228935
+      },
+      mapUI: {
+        buttonLabel: 'Start',
+        switchLabel: 'inactive',
+        switchEnable: false
+      },
+
+      polling: false
     }
   }
 
-  pollClick () {
-    // TODO: call to server for current location here.
-    console.log('Poll has been clicked, doing get')
-    console.log(this)
-    axios.get('https://8pi5e8eqs7.execute-api.eu-west-1.amazonaws.com/latest/currentLocation')
-      .then(res => {
-        console.log(res)
-      })
+  setLocation (lat, lng) {
+    this.setState({
+      currentLocation: {
+        lat,
+        lng
+      }
+    })
   }
 
+  processData (data) {
+    // currently hard codded
+    console.log(data.Item.val)
+    const location = data.Item.val
+    if (location === 'Shaun') {
+      this.setState({
+        currentLocation: {
+          lat: -25.753953,
+          lng: 28.229920
+        }
+      })
+    } else if (location === 'Imtiaz') {
+      this.setLocation(-25.753765, 28.228836)
+    }
+  }
+  pollClick () {
+    if (this.state.polling) { this.stopPolling() } else { this.startPolling() }
+  }
+
+  startPolling () {
+    this.setState({
+      mapUI: {
+        buttonLabel: 'Stop',
+        switchLabel: 'active',
+        switchEnable: true
+      },
+      polling: true
+    })
+    this.poll()
+  }
+  poll () {
+    axios.get('https://8pi5e8eqs7.execute-api.eu-west-1.amazonaws.com/latest/currentLocation')
+      .then(res => {
+        this.processData(res.data.data)
+      })
+      .catch(err => {
+        console.log('error has occured', err)
+      })
+      .then(() => {
+        if (this.state.polling) { this.poll() }
+      })
+  }
+  stopPolling () {
+    this.setState({
+      mapUI: {
+        buttonLabel: 'Start',
+        switchLabel: 'inactive',
+        switchEnable: false
+      },
+      polling: false
+    })
+  }
   render () {
     return (
       <div className='map-grid'>
@@ -33,9 +100,13 @@ class index extends Component {
             <Map currentLocation={this.state.currentLocation} />
           </ContainerDimenstions>
         </Card>
-        <MapUI click={() => {
-          this.pollClick()
-        }}
+        <MapUI
+          click={() => {
+            this.pollClick()
+          }}
+          buttonLabel={this.state.mapUI.buttonLabel}
+          switchLabel={this.state.mapUI.switchLabel}
+          switchEnable={this.state.mapUI.switchEnable}
         />
       </div>
     )
