@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card, CardTitle, CardText, Button, Switch, FontIcon } from 'react-md'
+import { Card, CardTitle, CardText, Button, Switch } from 'react-md'
 import './Map.sass'
 
 class MapUI extends Component {
