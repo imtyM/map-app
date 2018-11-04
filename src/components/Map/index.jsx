@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Card} from 'react-md'
+import { Card } from 'react-md'
 import ContainerDimenstions from 'react-container-dimensions'
 import axios from 'axios'
 import './Map.sass'
@@ -18,7 +18,7 @@ class index extends Component {
 
     this.state = {
       currentLocation: {
-        lat: -25.753359,
+        lat: 25.753359,
         lng: 28.228935
       },
       mapUI: {
@@ -27,7 +27,9 @@ class index extends Component {
         switchEnable: false
       },
 
-      polling: false
+      polling: false,
+      current_val: 'Never get from server yet',
+      current_counter: 0
     }
   }
 
@@ -44,6 +46,11 @@ class index extends Component {
     // currently hard codded
     console.log(data.Item.val)
     const location = data.Item.val
+    const counter = data.Item.post_counter
+    this.setState({
+      current_val: location,
+      current_counter: counter
+    })
     if (location === 'shaun') {
       this.setLocation(-25.753953, 28.229920)
     } else if (location === 'imtiaz') {
@@ -51,7 +58,9 @@ class index extends Component {
     } else if (location === 'franco') {
       this.setLocation(-25.753845, 28.228982)
     } else {
+      this.setLocation(-25.753359, 28.228935)
       this.setLocation(-25.753806, 28.228497)
+      this.setLocation(-25.753953, 28.229920)
     }
   }
   pollClick () {
@@ -106,6 +115,8 @@ class index extends Component {
           buttonLabel={this.state.mapUI.buttonLabel}
           switchLabel={this.state.mapUI.switchLabel}
           switchEnable={this.state.mapUI.switchEnable}
+          currentVal={this.state.current_val}
+          currentCounter={this.state.current_counter}
         />
       </div>
     )

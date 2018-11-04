@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Card, CardTitle, CardText, Button, Switch} from 'react-md'
+import { Card, CardTitle, CardText, Button, Switch, FontIcon } from 'react-md'
 import './Map.sass'
 
 class MapUI extends Component {
@@ -10,7 +10,7 @@ class MapUI extends Component {
   render () {
     return (
       <Card>
-        <CardTitle style={{justifyContent: 'center'}} title='Map Actions' subtitle='' />
+        <CardTitle style={{ justifyContent: 'center' }} title='Map Actions' subtitle='' />
         <CardText >
           <div className='md-grid'>
             <Switch
@@ -21,7 +21,7 @@ class MapUI extends Component {
               label={this.props.switchLabel}
               name='polling switch'
               checked={this.props.switchEnable}
-              onChange={() => {}}
+              onChange={() => { }}
             />
             <Button
               raised
@@ -32,6 +32,24 @@ class MapUI extends Component {
             >
               {this.props.buttonLabel}
             </Button>
+
+            <CardTitle title={this.props.currentVal} className='md-cell--4' />
+            {/* <CardTitle title='LTE' className='md-cell--4' /> */}
+            {/* <FontIcon className='md-cell--4'>signal_cellular_4_bar</FontIcon> */}
+            {/* <h1 className='md-cell--4'>4</h1> */}
+
+            <CardTitle title={this.props.currentCounter} className='md-cell--4' />
+            {/* <CardTitle title='LTE' className='md-cell--4' /> */}
+            {/* <h1 className='md-cell--4'>5</h1> */}
+
+            {/* <CardTitle title='Telkom' className='md-cell--4' /> */}
+            {/* <CardTitle title='GSM' className='md-cell--4' /> */}
+            {/* <h1 className='md-cell--4'>4</h1> */}
+
+            {/* <CardTitle title='CellC' className='md-cell--4' /> */}
+            {/* <CardTitle title='LTE' className='md-cell--4' /> */}
+            {/* <h1 className='md-cell--4'>3</h1> */}
+
           </div>
         </CardText>
       </Card>
